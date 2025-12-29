@@ -2,10 +2,7 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -14,18 +11,13 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: rgb(216, 250, 154);
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
 }
 
 .App-link {
-  color: #61dafb;
+  color: #90bac5;
 }
 
 @keyframes App-logo-spin {
@@ -35,4 +27,77 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.game-board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(199, 134, 235);
+  padding: 20px;
+  border-radius: 12px;
+}
+.board-row {
+  display: flex;
+}
+.square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  border: 2px solid rgb(53, 25, 96);
+  background-color: rgb(216, 250, 154); 
+}
+
+.game-info {
+  margin-left: 40px; /* or adjust as needed */
+  color: rgb(179, 224, 222);       /* optional: match your theme */
+}
+.status {
+  font-size: 32px;  /* make it bigger */
+  font-weight: bold; /* optional: make it stand out */
+  color: black;     /* optional: make it pop */
+  margin-bottom: 20px; /* space between status and board */
+}
+
+.button {
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  background-color: #95ddf1;
+  color: #000;
+}
+.button:hover {
+  background-color: #3987cc;
+}
+
+.reset-btn {
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 8px;
+  border: 2px solid #a156d2;
+  background-color: #ffcc00; /* yellow */
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.reset-btn:hover {
+  background-color: #ffc107; /* slightly darker yellow */
+  transform: scale(1.05);     /* small pop on hover */
 }
