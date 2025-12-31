@@ -1,3 +1,5 @@
+// cd C:\Users\natel\Documents\react-projects\tic-tac-toe
+
 import { useState, useEffect, useCallback } from 'react';
 import confetti from 'canvas-confetti';
 import './App.css';
@@ -103,10 +105,11 @@ export default function Game() {
     }
   }, [isTie, resetGame]);
 
+
   const status = winner
     ? <span className="winner">Winner: {winner}</span>
     : isTie
-    ? <span className="tie">It's a tie! Resetting in 3 seconds...</span>
+    ? <span className="tie">It's a draw! Resetting in 3 seconds...</span>
     : <span className="next-player">Next player: {xIsNext ? 'X' : 'O'}</span>;
 
   function handlePlay(nextSquares) {
