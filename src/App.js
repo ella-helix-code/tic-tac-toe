@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import confetti from 'canvas-confetti';
 import './App.css';
 
 function Square({ value, onSquareClick }) {
@@ -48,9 +49,64 @@ export default function Game() {
 
   // ← Must be declared here
   const winner = calculateWinner(currentSquares);
+  const isBoardFull = currentSquares.every(square => square !== null);
+  const isTie = !winner && isBoardFull;
+
+  const resetGame = useCallback(() => {
+    setHistory([Array(9).fill(null)]);
+    setCurrentMove(0);
+  }, []);
+
+  // Trigger confetti when a winner is detected
+  useEffect(() => {
+    if (winner) {
+      const duration = 3000;
+      const animationEnd = Date.now() + duration;
+      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+      function randomInRange(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      const interval = setInterval(function() {
+        const timeLeft = animationEnd - Date.now();
+
+        if (timeLeft <= 0) {
+          return clearInterval(interval);
+        }
+
+        const particleCount = 50 * (timeLeft / duration);
+        confetti({
+          ...defaults,
+          particleCount,
+          origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
+        });
+        confetti({
+          ...defaults,
+          particleCount,
+          origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
+        });
+      }, 250);
+
+      return () => clearInterval(interval);
+    }
+  }, [winner]);
+
+  // Auto-reset after 3 seconds if it's a tie
+  useEffect(() => {
+    if (isTie) {
+      const timeout = setTimeout(() => {
+        resetGame();
+      }, 3000);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [isTie, resetGame]);
 
   const status = winner
     ? <span className="winner">Winner: {winner}</span>
+    : isTie
+    ? <span className="tie">It's a tie! Resetting in 3 seconds...</span>
     : <span className="next-player">Next player: {xIsNext ? 'X' : 'O'}</span>;
 
   function handlePlay(nextSquares) {
@@ -61,11 +117,6 @@ export default function Game() {
 
   function jumpTo(move) {
     setCurrentMove(move);
-  }
-
-  function resetGame() {
-    setHistory([Array(9).fill(null)]);
-    setCurrentMove(0);
   }
 
   const moves = history.map((squares, move) => {
