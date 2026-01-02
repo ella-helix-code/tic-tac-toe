@@ -2,7 +2,12 @@
   text-align: center;
 }
 
-
+body {
+  margin: 0;
+  background-color: #0b0f18; /* dark blue */
+  color: rgb(184, 156, 186);
+  font-family: Arial, sans-serif;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -11,13 +16,13 @@
 }
 
 .App-header {
-  background-color: rgb(216, 250, 154);
+  background-color: rgb(191, 203, 168);
   min-height: 100vh;
-  color: white;
+  color: rgb(118, 95, 111);
 }
 
 .App-link {
-  color: #90bac5;
+  color: #80959a;
 }
 
 @keyframes App-logo-spin {
@@ -31,16 +36,19 @@
 
 .game {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 20px;
+  gap: 20px;
 }
 .game-board {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgb(199, 134, 235);
+  background-color:rgba(255, 255, 255, 0.1);
   padding: 20px;
   border-radius: 12px;
 }
@@ -51,23 +59,40 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80px;
-  height: 80px;
+  width: 120px;
+  height: 120px;
   font-size: 32px;
   font-weight: bold;
   cursor: pointer;
-  border: 2px solid rgb(53, 25, 96);
-  background-color: rgb(216, 250, 154); 
+  border: 3px solid rgb(223, 243, 233);
+  background-color: rgb(151, 234, 229);
+  transition: opacity 0.2s ease;
+}
+
+.square:hover:not(:disabled) {
+  opacity: 0.6;
+}
+
+.square.disabled,
+.square:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.square-content {
+  font-size: 72px;
+  line-height: 1;
 }
 
 .game-info {
-  margin-left: 40px; /* or adjust as needed */
-  color: rgb(179, 224, 222);       /* optional: match your theme */
+  font-size: medium;
+  font-weight: 200;
+  color: rgb(151, 234, 229);       /* optional: match your theme */
 }
 .status {
   font-size: 32px;  /* make it bigger */
   font-weight: bold; /* optional: make it stand out */
-  color: black;     /* optional: make it pop */
+  color: #33c7f0;     /* optional: make it pop */
   margin-bottom: 20px; /* space between status and board */
 }
 
@@ -78,11 +103,11 @@
   cursor: pointer;
   border-radius: 5px;
   border: none;
-  background-color: #95ddf1;
+  background-color: #33c7f0;
   color: #000;
 }
 .button:hover {
-  background-color: #3987cc;
+  background-color: #c8b6cb;
 }
 
 .reset-btn {
@@ -90,14 +115,315 @@
   font-size: 18px;
   font-weight: bold;
   border-radius: 8px;
-  border: 2px solid #a156d2;
-  background-color: #ffcc00; /* yellow */
-  color: #333;
+  border: 2px solid rgb(223, 243, 233);
+  background-color: rgb(151, 234, 229); /* yellow */
+  color: #100606;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .reset-btn:hover {
-  background-color: #ffc107; /* slightly darker yellow */
+  background-color: #f9e668; /* slightly darker yellow */
   transform: scale(1.05);     /* small pop on hover */
+}
+
+.emoji-selector {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.emoji-selection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.emoji-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.emoji-group label {
+  font-size: 18px;
+  font-weight: bold;
+  color: rgb(223, 243, 233);
+}
+
+.emoji-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.emoji-btn {
+  width: 50px;
+  height: 50px;
+  font-size: 28px;
+  border: 2px solid rgb(223, 243, 233);
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emoji-btn:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.emoji-btn.selected {
+  background-color: rgb(151, 234, 229);
+  border-color: rgb(223, 243, 233);
+  transform: scale(1.15);
+}
+
+.emoji-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Welcome Page Styles */
+.welcome-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+  position: relative;
+}
+
+.welcome-title {
+  font-size: 48px;
+  font-weight: bold;
+  color: rgb(223, 243, 233);
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.welcome-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.player-setup {
+  display: flex;
+  gap: 40px;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.player-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  min-width: 300px;
+}
+
+.player-section h2 {
+  font-size: 24px;
+  color: rgb(223, 243, 233);
+  margin: 0;
+}
+
+.name-input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 18px;
+  border: 2px solid rgb(223, 243, 233);
+  background-color: rgba(255, 255, 255, 0.2);
+  color: rgb(223, 243, 233);
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.name-input:focus {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-color: rgb(151, 234, 229);
+}
+
+.name-input::placeholder {
+  color: rgba(223, 243, 233, 0.6);
+}
+
+.start-btn {
+  padding: 16px 48px;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 12px;
+  border: 2px solid rgb(223, 243, 233);
+  background-color: rgb(151, 234, 229);
+  color: #100606;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 200px;
+}
+
+.start-btn:hover:not(:disabled) {
+  background-color: rgb(223, 243, 233);
+  transform: scale(1.05);
+}
+
+.start-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Player Mode Selection */
+.player-mode-selection {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.mode-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 40px 60px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 3px solid rgb(223, 243, 233);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 250px;
+}
+
+.mode-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+  border-color: rgb(151, 234, 229);
+}
+
+.mode-icon {
+  font-size: 64px;
+}
+
+.mode-text {
+  font-size: 32px;
+  font-weight: bold;
+  color: rgb(223, 243, 233);
+}
+
+.mode-desc {
+  font-size: 18px;
+  color: rgba(223, 243, 233, 0.8);
+}
+
+.ai-info {
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.ai-info p {
+  margin: 0;
+  font-size: 18px;
+  color: rgb(223, 243, 233);
+}
+
+/* Game Page Updates */
+.back-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  border: 2px solid rgb(223, 243, 233);
+  background-color: rgba(255, 255, 255, 0.2);
+  color: rgb(223, 243, 233);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  align-self: flex-start;
+  margin-bottom: 10px;
+}
+
+.back-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.players-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 10px;
+}
+
+.players-names {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.players-emojis {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.player-name-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.player-emoji-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.player-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: rgb(223, 243, 233);
+}
+
+.player-emoji {
+  font-size: 32px;
+}
+
+.vs {
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(151, 234, 229);
+  padding: 0 20px;
+}
+
+.emoji-spacer {
+  width: 1px;
+  padding: 0 20px;
 }
