@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+# Tic Tac Toe App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app was made with React and node.js and Cursor. 
 
-## Available Scripts
+I wanted to learn the basic structure of coding a web app, so I started with a simple tic tac toe file. I found 
+the tutorial on React.com. I don't believe I recorded this file or my edits to it. This is my first repo on github and 
+my first web app so I am learning the proper method and process of developing, which allows easy collaborations. In the 
+future I am going to make regular commits and understand pushes so I have my full coding process on my repository. 
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+I started with the simple tic tac toe logic from a React Turtorial. I added features to this code as I began to understand it. 
+        a. confetti after someone wins
+        b. Reset Button 
+        c. automatically reseting the game after their is a draw
+        d. allowing the users to choose which icon to play with
+        e. entering player name
+        f. playing as single our double player
+        g. adjusting the difficulty against AI
+        h. on the game board screen having a settings button to change name, icon, and level
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Learning points
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+In future projects I am going to log my edits and commits better. This first project all about figuring out how to 
+create an app with React and put it live. I didn't have a goal of logging what I did. I just wanted it done as it was 
+my first one. With that said, in the future and on my next projects I want to record my process better. In addition I
+want to be more organized and plan my process. The tic-tac-toe app was spontaneous and a curiosity project. Now that I 
+understand React better, I will be more ogranized. 
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    
